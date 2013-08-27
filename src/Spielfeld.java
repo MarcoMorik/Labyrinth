@@ -40,4 +40,39 @@ public class Spielfeld {
 		return result;
 		
 	}
+	public void erzeugeStart(){
+		this.eigenschaft = STARTFELD;
+	}
+	public void erzeugeZiel(){
+		this.eigenschaft = ENDFELD;
+	}
+	public boolean baueMauer(Spielfeld[][] lab,int seite){
+		switch(seite){  //Seite: 0 links 1 oben 2 rechts 3 unten
+			case 0: if(linkerN != null){
+				 linkerN = null;
+				 lab[this.PositionX-1][this.PositionY].rechterN = null;
+				 return true;
+			}
+			else return false;
+			case 1:if(obererN != null){
+				 obererN = null;
+				 lab[this.PositionX][this.PositionY-1].untererN = null;
+				 return true;
+			}
+			else return false;
+			case 2:if(rechterN != null){
+				 rechterN = null;
+				 lab[this.PositionX+1][this.PositionY].linkerN = null;
+				 return true;
+			}
+			else return false;
+			case 3:if(untererN != null){
+				 untererN = null;
+				 lab[this.PositionX][this.PositionY+1].obererN = null;
+				 return true;
+			}
+			default:
+				return false;
+		}
+	}
 }
