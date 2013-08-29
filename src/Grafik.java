@@ -1,25 +1,30 @@
-//import java.awt.*;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
-public class Grafik {
-
-	public static void zeige() {
+class MyButtonFrame extends JFrame{
 	
+	public MyButtonFrame() {
+		super("JFrame mit Button");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		ImageIcon meinBild = new ImageIcon("Kreuz.png");	//Bild einfügen C:\\Users\\Maximus\\Dropbox\\eclipse_workspace\\MyFrame\\Bild.bmp
 		
-		JFrame frame = new JFrame("FrameDemo"); 				//Objekt der Klasse JFrame erstellen.
-		frame.setTitle("Labyrinth");							//Name festlegen
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 	//Das Fenster mit X schließen können
-
-		//...create emptyLabel...
-		//frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-
-		frame.pack();											//Größe festlegen
-		frame.setSize(länge*5,breite*5);
-		frame.setLocation(50,50);
-
-		frame.setVisible(true);									//Fenster sichtbar machen (was es nicht alles so gibt...)
+		JLabel meinLabel;									//Einfügen in den Inhaltsspeicher des Fensters
+		for (int i=0; i<10*10; i++) {
+			meinLabel = new JLabel(meinBild);
+			getContentPane().add(meinLabel);					
+		}
+		
+		getContentPane().setLayout(new GridLayout(10,10));	
+		
+		//pack();											//ideale Größe einstellen
+		setSize(500,500);
+		setLocation(50,50);									//Ort festlegen
+		setVisible(true);									//Fenster sichtbar machen(was es nicht so alles gibt...)
 	}
 
 }
