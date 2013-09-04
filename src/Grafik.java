@@ -5,9 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-class MyButtonFrame extends JFrame{
+class Grafik extends JFrame{
 	
-	public MyButtonFrame() {
+	public Grafik() {
 		super("JFrame mit Button");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

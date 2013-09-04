@@ -7,6 +7,8 @@ public class LabyrinthA {
 	Spielfeld[][] Labyrinth;
 	int breite;
 	int hoehe;
+	int[] Start;
+	int[] Ziel;
 
 	public LabyrinthA(int breite, int hoehe){
 
@@ -35,8 +37,8 @@ public class LabyrinthA {
 		
 	}
 	public void StartZielGenerator(){
-		int[] Start = zufallskoordinate();
-		int[] Ziel = zufallskoordinate();
+		this.Start = zufallskoordinate();
+		this.Ziel = zufallskoordinate();
 		while(Ziel[0] == Start[0] && Ziel[1] == Start[1]){
 			Ziel = zufallskoordinate();
 		}
