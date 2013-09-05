@@ -1,12 +1,6 @@
 
-/**
- * @author Marco
- *
- */
-<<<<<<< HEAD
-public class LabyrinthA {
-	public Spielfeld[][] Labyrinth;
->>>>>>> origin/master
+public class LabyrinthA{
+	Spielfeld[][] Labyrinth;
 	int breite;
 	int hoehe;
 	public int[] Start;
@@ -54,9 +48,7 @@ public class LabyrinthA {
 			position = zufallskoordinate();
 			seite = (int) Math.random() * 4;
 			}while(Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite));*/
-<<<<<<< HEAD
-		for(int i=0;i<(breite*hoehe*1.5);i++){
->>>>>>> origin/master
+		for(int i=0;i<(breite+hoehe);i++){
 			position = zufallskoordinate();
 			seite = (int) (Math.random() * 4);
 			Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite);

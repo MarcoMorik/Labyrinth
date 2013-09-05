@@ -13,7 +13,7 @@ public class Spielfeld {
 	int PositionX;
 	int PositionY;
 	int Markiert;
-	static final Spielfeld Rand = new Spielfeld(-1,-1);
+	public static final Spielfeld Rand = new Spielfeld(-1,-1);
 	
 	
 	public Spielfeld(int x,int y){
@@ -32,6 +32,17 @@ public class Spielfeld {
 		else this.rechterN = lab[this.PositionX+1][this.PositionY];
 		if (this.PositionY == lab[0].length-1) this.untererN = Rand;
 		else this.untererN = lab[this.PositionX][this.PositionY+1];
+	}
+	public void updateNurRand(Spielfeld[][] lab){
+
+		if (this.PositionX == 0) this.linkerN = Rand ;
+		else this.linkerN = null;
+		if (this.PositionY == 0) this.obererN = Rand;
+		else this.obererN = null;
+		if (this.PositionX == lab.length-1) this.rechterN = Rand;
+		else this.rechterN = null;
+		if (this.PositionY == lab[0].length-1) this.untererN = Rand;
+		else this.untererN = null;
 	}
 	public ArrayList<Spielfeld> schritte(){
 		ArrayList<Spielfeld> result = new ArrayList<>();
@@ -83,29 +94,28 @@ public class Spielfeld {
 	}
 	// 0: links 1 : oben 2: rechts 3 : unten
 	public int[] baueWeg(Spielfeld[][] lab, int seite){
-		int[] result = new int[2];
 		switch(seite){ 
 		case 0: if(linkerN == null){
 			 linkerN = lab[this.PositionX-1][this.PositionY];
-			 lab[this.PositionX-1][this.PositionY].rechterN = this ;
+			 linkerN.rechterN = this ;
 			 return linkerN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 1:if(obererN == null){
 			 obererN = lab[this.PositionX][this.PositionY-1];
-			 lab[this.PositionX][this.PositionY-1].untererN = this ;
+			 obererN.untererN = this ;
 			 return obererN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 2:if(rechterN == null){
 			 rechterN = lab[this.PositionX+1][this.PositionY];
-			 lab[this.PositionX+1][this.PositionY].linkerN = this;
+			 rechterN.linkerN = this;
 			 return rechterN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 3:if(untererN == null){
 			 untererN = lab[this.PositionX][this.PositionY+1];
-			 lab[this.PositionX][this.PositionY+1].obererN = this;
+			 untererN.obererN = this;
 			 return untererN.koordinaten();
 		}
 		default:
