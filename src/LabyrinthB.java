@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 // Labyrinth mit dem verschiedenen Startpunkten
 public class LabyrinthB {
-	Spielfeld[][] Labyrinth;
+	public Spielfeld[][] Labyrinth;
 	int breite;
 	int hoehe;
 
-	int[] Start;
-	int[] Ziel;
+	public int[] Start;
+	public int[] Ziel;
 	public LabyrinthB(int breite, int hoehe){
 		this.breite=breite;
 		this.hoehe=hoehe;
@@ -18,7 +18,6 @@ public class LabyrinthB {
 	}
 	
 	private void createLab(){
-		Spielfeld[][] Labyrinth;
 		Labyrinth = new Spielfeld[breite][hoehe];
 		for(int i=0; i<breite;i++){
 			for(int j=0; j<hoehe;j++){
@@ -63,8 +62,8 @@ public class LabyrinthB {
 		
 	}
 	public int[] zufallskoordinate(){
-		int h = (int ) Math.random() * hoehe;
-		int b = (int) Math.random() * breite;
+		int h = (int )( Math.random() * hoehe);
+		int b = (int)( Math.random() * breite);
 		int[] result = {b,h};
 		return result;
 	}

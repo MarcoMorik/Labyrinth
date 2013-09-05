@@ -1,30 +1,29 @@
-import java.awt.GridLayout;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
-
-class Grafik extends JFrame{
+public class Grafik extends Canvas {
 	
-	public Grafik() {
-		super("JFrame mit Button");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public Grafik(LabyrinthA lab) {
+		
+		//lab.Labyrinth[i][j].PositionX == 2;
+		setBackground(Color.pink); // weisser Hintergrund
 
-		ImageIcon meinBild = new ImageIcon("Kreuz.png");	//Bild einfügen C:\\Users\\Maximus\\Dropbox\\eclipse_workspace\\MyFrame\\Bild.bmp
-		
-		JLabel meinLabel;									//Einfügen in den Inhaltsspeicher des Fensters
-		for (int i=0; i<10*10; i++) {
-			meinLabel = new JLabel(meinBild);
-			getContentPane().add(meinLabel);					
-		}
-		
-		getContentPane().setLayout(new GridLayout(10,10));	
-		
-		//pack();											//ideale Größe einstellen
-		setSize(500,500);
-		setLocation(50,50);									//Ort festlegen
-		setVisible(true);									//Fenster sichtbar machen(was es nicht so alles gibt...)
+
+		JFrame frame = new JFrame("Labyrinth"); 	// Fenster erzeugen   
+		frame.getContentPane().add("Center", this); // ins Fenster
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public Dimension getPreferredSize() {
+		return new Dimension(190, 190);
 	}
 
+
+	public void paint(Graphics g) {
+		g.drawLine(0,0,190,190);
+	}
 }

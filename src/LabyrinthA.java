@@ -4,11 +4,11 @@
  *
  */
 public class LabyrinthA {
-	Spielfeld[][] Labyrinth;
+	public Spielfeld[][] Labyrinth;
 	int breite;
 	int hoehe;
-	int[] Start;
-	int[] Ziel;
+	public int[] Start;
+	public int[] Ziel;
 
 	public LabyrinthA(int breite, int hoehe){
 
@@ -22,7 +22,6 @@ public class LabyrinthA {
 	}
 	
 	private void createLab(){
-		Spielfeld[][] Labyrinth;
 		Labyrinth = new Spielfeld[breite][hoehe];
 		for(int i=0; i<breite;i++){
 			for(int j=0; j<hoehe;j++){
@@ -50,22 +49,22 @@ public class LabyrinthA {
 	public void ZufallsMauern(){
 		int[] position;
 		int seite;  // 0 links 1 oben 2 rechts 3 unten
-		do{
+		/**do{
 			position = zufallskoordinate();
 			seite = (int) Math.random() * 4;
-			}while(Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite));
-		/**for(int i=0;i<(breite+hoehe);i++){
+			}while(Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite));*/
+		for(int i=0;i<(breite+hoehe);i++){
 			position = zufallskoordinate();
 			seite = (int) Math.random() * 4;
-			Labyrinth[position[0]][position[1]].baueMauer(seite);
-		} */
+			Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite);
+		} 
 	}
 	
 	/** 1. Breite 2. Hoehe
 	 */
 	public int[] zufallskoordinate(){
-		int h = (int ) Math.random() * hoehe;
-		int b = (int) Math.random() * breite;
+		int h = (int) (Math.random() * hoehe);
+		int b = (int) (Math.random() * breite);
 		int[] result = {b,h};
 		return result;
 	}
