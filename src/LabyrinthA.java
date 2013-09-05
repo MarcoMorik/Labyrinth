@@ -15,6 +15,7 @@ public class LabyrinthA {
 		this.breite=breite;
 		this.hoehe=hoehe;
 		createLab();
+		
 		StartZielGenerator();
 		ZufallsMauern();
 		

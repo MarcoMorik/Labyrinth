@@ -3,7 +3,6 @@ import java.util.ArrayList;
 // Labyrinth mit dem verschiedenen Startpunkten
 public class LabyrinthB {
 	Spielfeld[][] Labyrinth;
-	int[][] Wurmer;
 	int breite;
 	int hoehe;
 
@@ -14,6 +13,7 @@ public class LabyrinthB {
 		this.hoehe=hoehe;
 		createLab();
 		StartZielGenerator();
+		baueWege(breite);
 		
 	}
 	
@@ -48,7 +48,7 @@ public class LabyrinthB {
 			else Wurmer.add(Start);
 			Labyrinth[Wurmer.get(i)[0]][Wurmer.get(i)[1]].Markiert=1;
 		}
-		while(Wurmer.size()>1){
+		while(Wurmer.size()>=1){
 			for(int[] wurm : Wurmer){
 				int richtung = (int) Math.random() * 4;
 				wurm = Labyrinth[wurm[0]][wurm[1]].baueWeg(Labyrinth, richtung);
