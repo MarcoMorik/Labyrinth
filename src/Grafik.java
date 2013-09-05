@@ -8,7 +8,8 @@ public class Grafik extends Canvas {
 	int hoehe;
 	int breite;
 	LabyrinthA lab;
-	int Faktor = 1;
+	int Faktor = 8;
+	//int startZielUmfang = (int)(Faktor*0.75);
 	
 	public Grafik(LabyrinthA lab) {
 		
@@ -33,6 +34,8 @@ public class Grafik extends Canvas {
 
 
 	public void paint(Graphics g) {
+		
+		g.fillOval(lab.Start[0],lab.Start[1],Faktor,Faktor);
 		
 		for(int i=0; i < breite; i++){
 			for(int j=0;j < hoehe; j++){

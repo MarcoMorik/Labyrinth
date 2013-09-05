@@ -53,9 +53,9 @@ public class LabyrinthA {
 			position = zufallskoordinate();
 			seite = (int) Math.random() * 4;
 			}while(Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite));*/
-		for(int i=0;i<(breite+hoehe);i++){
+		for(int i=0;i<(breite*hoehe*1.5);i++){
 			position = zufallskoordinate();
-			seite = (int) Math.random() * 4;
+			seite = (int) (Math.random() * 4);
 			Labyrinth[position[0]][position[1]].baueMauer(Labyrinth, seite);
 		} 
 	}
