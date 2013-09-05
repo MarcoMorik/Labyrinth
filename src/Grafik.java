@@ -3,24 +3,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 <<<<<<< HEAD
-=======
 
-public class Grafik extends Canvas {
-	
-	int hoehe;
-	int breite;
-	LabyrinthA lab;
-	int Faktor = 8;
-	//int startZielUmfang = (int)(Faktor*0.75);
-	
-	public Grafik(LabyrinthA lab) {
-		
-		this.lab = lab;
-		hoehe  = lab.hoehe;
-		breite = lab.breite;
-		
-		//lab.Labyrinth[i][j].PositionX == 2;
-		setBackground(Color.pink); // weisser Hintergrund
 >>>>>>> origin/master
 
 public class Grafik extends Canvas {
@@ -41,7 +24,6 @@ public class Grafik extends Canvas {
 
 <<<<<<< HEAD
 
-=======
 >>>>>>> origin/master
 		JFrame frame = new JFrame("Labyrinth"); 	// Fenster erzeugen   
 		frame.getContentPane().add("Center", this); // ins Fenster
@@ -55,10 +37,6 @@ public class Grafik extends Canvas {
 	}
 <<<<<<< HEAD
 
-
-	public void paint(Graphics g) {
-		
-=======
 
 
 	public void paint(Graphics g) {
