@@ -2,6 +2,26 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+<<<<<<< HEAD
+=======
+
+public class Grafik extends Canvas {
+	
+	int hoehe;
+	int breite;
+	LabyrinthA lab;
+	int Faktor = 8;
+	//int startZielUmfang = (int)(Faktor*0.75);
+	
+	public Grafik(LabyrinthA lab) {
+		
+		this.lab = lab;
+		hoehe  = lab.hoehe;
+		breite = lab.breite;
+		
+		//lab.Labyrinth[i][j].PositionX == 2;
+		setBackground(Color.pink); // weisser Hintergrund
+>>>>>>> origin/master
 
 public class Grafik extends Canvas {
 	
@@ -19,7 +39,10 @@ public class Grafik extends Canvas {
 		//lab.Labyrinth[i][j].PositionX == 2;
 		setBackground(Color.pink); // weisser Hintergrund
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		JFrame frame = new JFrame("Labyrinth"); 	// Fenster erzeugen   
 		frame.getContentPane().add("Center", this); // ins Fenster
 		frame.pack();
@@ -30,10 +53,19 @@ public class Grafik extends Canvas {
 	public Dimension getPreferredSize() {
 		return new Dimension(this.hoehe*Faktor, this.breite*Faktor);
 	}
+<<<<<<< HEAD
 
 
 	public void paint(Graphics g) {
 		
+=======
+
+
+	public void paint(Graphics g) {
+		
+		g.fillOval(lab.Start[0],lab.Start[1],Faktor,Faktor);
+		
+>>>>>>> origin/master
 		for(int i=0; i < breite; i++){
 			for(int j=0;j < hoehe; j++){
 				if (lab.Labyrinth[i][j].obererN == null  || lab.Labyrinth[i][j].obererN == Spielfeld.Rand)
