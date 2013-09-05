@@ -1,28 +1,33 @@
 import java.util.ArrayList;
 
 // Labyrinth mit dem verschiedenen Startpunkten
-public class LabyrinthB {
+public class LabyrinthB{
 	Spielfeld[][] Labyrinth;
-	int[][] Wurmer;
 	int breite;
 	int hoehe;
 
-	int[] Start;
-	int[] Ziel;
+	public int[] Start;
+	public int[] Ziel;
 	public LabyrinthB(int breite, int hoehe){
 		this.breite=breite;
 		this.hoehe=hoehe;
 		createLab();
+		
 		StartZielGenerator();
+		baueWege(breite*2);
 		
 	}
 	
 	private void createLab(){
-		Spielfeld[][] Labyrinth;
 		Labyrinth = new Spielfeld[breite][hoehe];
 		for(int i=0; i<breite;i++){
 			for(int j=0; j<hoehe;j++){
 				Labyrinth[i][j] = new Spielfeld(i,j);
+			}
+		}
+		for(int i=0;i<breite;i++){
+			for(int j=0;j<hoehe;j++){
+				Labyrinth[i][j].updateNurRand(Labyrinth);
 			}
 		}
 		
@@ -48,23 +53,23 @@ public class LabyrinthB {
 			else Wurmer.add(Start);
 			Labyrinth[Wurmer.get(i)[0]][Wurmer.get(i)[1]].Markiert=1;
 		}
-		while(Wurmer.size()>1){
-			for(int[] wurm : Wurmer){
-				int richtung = (int) Math.random() * 4;
-				wurm = Labyrinth[wurm[0]][wurm[1]].baueWeg(Labyrinth, richtung);
-				if(Labyrinth[wurm[0]][wurm[1]].Markiert==0){
-					Labyrinth[wurm[0]][wurm[1]].Markiert=1;
+		for(int pla=0;pla<breite+hoehe;pla++){
+			for(int i=0;i<Wurmer.size();i++){
+				int richtung = (int)( Math.random() * 4);
+				Wurmer.set(i,  Labyrinth[Wurmer.get(i)[0]][Wurmer.get(i)[1]].baueWeg(Labyrinth, richtung));
+				/**if(Labyrinth[Wurmer.get(i)[0]][Wurmer.get(i)[1]].Markiert==0){
+					Labyrinth[Wurmer.get(i)[0]][Wurmer.get(i)[1]].Markiert=1;
 				}
 				else{
-					Wurmer.remove(wurm);
-				}
+					Wurmer.remove(i);
+				}*/
 			}
 		}
 		
 	}
 	public int[] zufallskoordinate(){
-		int h = (int ) Math.random() * hoehe;
-		int b = (int) Math.random() * breite;
+		int h = (int )( Math.random() * hoehe);
+		int b = (int)( Math.random() * breite);
 		int[] result = {b,h};
 		return result;
 	}
