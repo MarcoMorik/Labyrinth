@@ -4,7 +4,7 @@ public class Hauptklasse {
 	public static void main(String args[]){
 		
 		System.out.println("Starte");
-		LabyrinthA lab = new LabyrinthA(30,30);
+		Labyrinth lab = new LabyrinthB(300,300);
 		new Grafik(lab);
 		System.out.println("Fertig");
 	}

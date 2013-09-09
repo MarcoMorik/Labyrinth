@@ -3,12 +3,12 @@
  * @author Marco
  *
  */
-public class LabyrinthA {
-	public Spielfeld[][] Labyrinth;
+public class LabyrinthA extends Labyrinth{
+/**	public Spielfeld[][] Labyrinth;
 	int breite;
 	int hoehe;
 	public int[] Start;
-	public int[] Ziel;
+	public int[] Ziel; */
 
 	public LabyrinthA(int breite, int hoehe){
 

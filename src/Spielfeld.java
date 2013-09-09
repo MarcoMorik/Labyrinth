@@ -33,6 +33,18 @@ public class Spielfeld {
 		if (this.PositionY == lab[0].length-1) this.untererN = Rand;
 		else this.untererN = lab[this.PositionX][this.PositionY+1];
 	}
+
+	public void updateNurRand(Spielfeld[][] lab){
+
+		if (this.PositionX == 0) this.linkerN = Rand ;
+		else this.linkerN = null;
+		if (this.PositionY == 0) this.obererN = Rand;
+		else this.obererN = null;
+		if (this.PositionX == lab.length-1) this.rechterN = Rand;
+		else this.rechterN = null;
+		if (this.PositionY == lab[0].length-1) this.untererN = Rand;
+		else this.untererN = null;
+	}
 	public ArrayList<Spielfeld> schritte(){
 		ArrayList<Spielfeld> result = new ArrayList<>();
 		if(linkerN != null && linkerN != Rand) result.add(linkerN);
@@ -83,7 +95,6 @@ public class Spielfeld {
 	}
 	// 0: links 1 : oben 2: rechts 3 : unten
 	public int[] baueWeg(Spielfeld[][] lab, int seite){
-		int[] result = new int[2];
 		switch(seite){ 
 		case 0: if(linkerN == null){
 			 linkerN = lab[this.PositionX-1][this.PositionY];

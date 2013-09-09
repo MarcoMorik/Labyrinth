@@ -7,18 +7,18 @@ public class Grafik extends Canvas {
 	
 	int hoehe;
 	int breite;
-	LabyrinthA lab;
-	int Faktor = 8;
+	Labyrinth lab;
+	int Faktor = 4;
 	//int startZielUmfang = (int)(Faktor*0.75);
 	
-	public Grafik(LabyrinthA lab) {
+	public Grafik(Labyrinth lab) {
 		
 		this.lab = lab;
 		hoehe  = lab.hoehe;
 		breite = lab.breite;
 		
 		//lab.Labyrinth[i][j].PositionX == 2;
-		setBackground(Color.pink); // weisser Hintergrund
+		setBackground(Color.green); // weisser Hintergrund
 
 
 		JFrame frame = new JFrame("Labyrinth"); 	// Fenster erzeugen   
