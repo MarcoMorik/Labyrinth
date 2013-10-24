@@ -10,11 +10,12 @@ public class Spielfeld {
 	static final int NORMAL = 0;
 	static final int STARTFELD = 1;
 	static final int ENDFELD = 2;
+	static final int BESUCHT = 3;
+	static final int RANDFELD = 4 ;
 	int PositionX;
 	int PositionY;
 	int Markiert;
 	static final Spielfeld Rand = new Spielfeld(-1,-1);
-	
 	
 	public Spielfeld(int x,int y){
 		this.eigenschaft = NORMAL;
@@ -64,6 +65,19 @@ public class Spielfeld {
 	public void erzeugeZiel(){
 		this.eigenschaft = ENDFELD;
 	}
+	public ArrayList<Integer> unbesuchteN(Spielfeld[][] lab){
+		ArrayList<Integer> nachbarn = new ArrayList<Integer>();
+		if(this.linkerN != Rand){
+			if (lab[this.PositionX-1][this.PositionY].eigenschaft == NORMAL) nachbarn.add(0);}
+		if(this.obererN != Rand){
+			if (lab[this.PositionX][this.PositionY-1].eigenschaft == NORMAL) nachbarn.add(1);}
+		if(this.rechterN != Rand){
+			if (lab[this.PositionX+1][this.PositionY].eigenschaft == NORMAL) nachbarn.add(2);}
+		if(this.untererN != Rand){
+			if (lab[this.PositionX][this.PositionY+1].eigenschaft == NORMAL) nachbarn.add(3);}
+			
+		return nachbarn;
+	}
 	public boolean baueMauer(Spielfeld[][] lab,int seite){
 		switch(seite){  //Seite: 0 links 1 oben 2 rechts 3 unten
 			case 0: if(linkerN != null && linkerN != Rand){
@@ -99,24 +113,28 @@ public class Spielfeld {
 		case 0: if(linkerN == null){
 			 linkerN = lab[this.PositionX-1][this.PositionY];
 			 lab[this.PositionX-1][this.PositionY].rechterN = this ;
+			 linkerN.eigenschaft = BESUCHT;
 			 return linkerN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 1:if(obererN == null){
 			 obererN = lab[this.PositionX][this.PositionY-1];
 			 lab[this.PositionX][this.PositionY-1].untererN = this ;
+			 obererN.eigenschaft = BESUCHT;
 			 return obererN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 2:if(rechterN == null){
 			 rechterN = lab[this.PositionX+1][this.PositionY];
 			 lab[this.PositionX+1][this.PositionY].linkerN = this;
+			 rechterN.eigenschaft = BESUCHT;
 			 return rechterN.koordinaten();
 		}
 		else return this.koordinaten();
 		case 3:if(untererN == null){
 			 untererN = lab[this.PositionX][this.PositionY+1];
 			 lab[this.PositionX][this.PositionY+1].obererN = this;
+			 untererN.eigenschaft = BESUCHT;
 			 return untererN.koordinaten();
 		}
 		default:

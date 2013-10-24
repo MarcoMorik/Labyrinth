@@ -2,10 +2,10 @@
 public class Hauptklasse {
 	
 	public static void main(String args[]){
-		
+		int faktor= 16;
 		System.out.println("Starte");
-		Labyrinth lab = new LabyrinthB(300,300);
-		new Grafik(lab);
+		Labyrinth lab = new LabyrinthC(80,40);
+		new Grafik(lab,faktor);
 		System.out.println("Fertig");
 	}
 }

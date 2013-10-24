@@ -8,16 +8,16 @@ public class Grafik extends Canvas {
 	int hoehe;
 	int breite;
 	Labyrinth lab;
-	int Faktor = 4;
+	int faktor;
 	//int startZielUmfang = (int)(Faktor*0.75);
 	
-	public Grafik(Labyrinth lab) {
+	public Grafik(Labyrinth lab, int fak) {
 		
 		this.lab = lab;
+		faktor =fak;
 		hoehe  = lab.hoehe;
 		breite = lab.breite;
-		
-		//lab.Labyrinth[i][j].PositionX == 2;
+		//lab.Labyrinth[i][j].PositionX == 8;
 		setBackground(Color.green); // weisser Hintergrund
 
 
@@ -29,27 +29,27 @@ public class Grafik extends Canvas {
 	}
 	
 	public Dimension getPreferredSize() {
-		return new Dimension(this.hoehe*Faktor, this.breite*Faktor);
+		return new Dimension(this.breite*faktor, this.hoehe*faktor);
 	}
 
 
 	public void paint(Graphics g) {
-		
-		g.fillOval(lab.Start[0],lab.Start[1],Faktor,Faktor);
+		g.fillOval(lab.Start[0]*faktor, lab.Start[1]*faktor, faktor, faktor);
+		g.fillOval(lab.Ziel[0]*faktor, lab.Ziel[1]*faktor, faktor, faktor);
 		
 		for(int i=0; i < breite; i++){
 			for(int j=0;j < hoehe; j++){
 				if (lab.Labyrinth[i][j].obererN == null  || lab.Labyrinth[i][j].obererN == Spielfeld.Rand)
-					g.drawLine(Faktor*i,Faktor*j,Faktor*i+Faktor,Faktor*j);
+					g.drawLine(faktor*i,faktor*j,faktor*i+faktor,faktor*j);
 				
 				if (lab.Labyrinth[i][j].untererN == null || lab.Labyrinth[i][j].untererN == Spielfeld.Rand)
-					g.drawLine(Faktor*i,Faktor*j+Faktor-1,i*Faktor+Faktor,j*Faktor+Faktor-1);
+					g.drawLine(faktor*i,faktor*j+faktor-1,i*faktor+faktor,j*faktor+faktor-1);
 				 
 				if (lab.Labyrinth[i][j].linkerN == null || lab.Labyrinth[i][j].linkerN == Spielfeld.Rand)
-					g.drawLine(Faktor*i,Faktor*j,i*Faktor,j*Faktor+Faktor);
+					g.drawLine(faktor*i,faktor*j,i*faktor,j*faktor+faktor);
 				
 				if (lab.Labyrinth[i][j].rechterN == null || lab.Labyrinth[i][j].rechterN == Spielfeld.Rand)
-					g.drawLine(Faktor*i+Faktor-1,j*Faktor,i*Faktor+Faktor-1,j*Faktor+Faktor);
+					g.drawLine(faktor*i+faktor-1,j*faktor,i*faktor+faktor-1,j*faktor+faktor);
 			}
 		}
 	}
